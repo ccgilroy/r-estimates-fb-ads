@@ -1,0 +1,11 @@
+{
+    "geo_locations": {
+        "regions": [{
+            "key": "3890",
+            "name": "Washington"
+        }]
+    },
+    "genders": [2],
+    "age_min": 20,
+    "age_max": 30
+}
