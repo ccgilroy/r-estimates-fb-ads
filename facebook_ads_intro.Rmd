@@ -1,0 +1,92 @@
+---
+title: | 
+  | Introduction: 
+  | Demographic estimates from the Facebook Marketing API
+author: "Connor Gilroy"
+date: "`r Sys.Date()`"
+output: 
+  beamer_presentation: 
+    theme: "metropolis"
+    latex_engine: xelatex
+    highlight: pygments
+    df_print: kable
+---
+
+# Facebook
+
+Facebook is the social network par excellence. [As of 2016](http://www.pewinternet.org/2016/11/11/social-media-update-2016/), **79%** of US internet users are on Facebook.
+
+![](figures/PI_2016.11.11_Social-Media-Update_0-01.png)
+
+# In the news...
+
+Facebook Ads are a locus of concern about discrimination, about "fake news", and so on.
+
+![](figures/fb_fail.png)
+
+# In research
+
+Using Facebook Ads is cutting edge: 
+
+- Emilio's paper with Ingmar Weber and Krishna Gummadi using it to study stocks of international migrants just came out this month. 
+([paper](http://onlinelibrary.wiley.com/doi/10.1111/padr.12102/full), [news](http://www.washington.edu/news/2017/10/12/using-facebook-data-as-a-real-time-census/))
+- J. Nathan Matias and others did an audit this summer of who had access to the 'Pride' reaction.
+([article](https://www.theatlantic.com/technology/archive/2017/06/facebook-pride-reaction/531633/), 
+[GitHub](https://github.com/natematias/Rainbow-Reaction-Analysis))
+
+# The Ads Manager
+
+The ability to target ads by demographics and interests is at the core of both the potential of and the concerns about Facebook Ads.
+
+![](figures/fb_ads_manager_example.png)
+
+# Example: description
+
+Even when large proportions of users don't provide a piece of information, you can still see clear geographic patterns.
+
+![](figures/fb_prop_map.png)
+
+# Example: validation
+
+The, it is possible to compare those patterns to existing data sources, which have their own sets of biases and limitations.
+
+![](figures/validation_sexuality_acs.png)
+
+# Technical overview
+
+**Authentication:**
+
+Two components: an *access token* and an *ads account*. 
+
+**Requesting information:**
+
+You specify the audience you want to reach using a *targeting spec* in a JSON format; you then get an estimate of how many users that specification will reach.
+
+# Documentation
+
+The Marketing API: 
+
+https://developers.facebook.com/docs/marketing-apis
+
+Access: 
+
+https://developers.facebook.com/docs/marketing-api/access
+
+Targeting: 
+
+https://developers.facebook.com/docs/marketing-api/buying-api/targeting
+
+# Pythonistas, you're in luck
+
+Matheus Araujo has written `pySocialWatcher`, a Python module for collecting social data from the Marketing API: https://github.com/maraujo/pySocialWatcher
+
+It relies on the `requests` package, Python's version of `httr`.
+
+Facebook also provides a Python SDK for the Marketing API, which is an interface/abstraction to the API: https://github.com/facebook/facebook-python-ads-sdk
+
+# Using other Facebook APIs from R
+
+`SocialMediaLab` and `Rfacebook` are packages that provide access to public Facebook pages and other aspects of Facebook's Graph API.
+
+To use these, you can generate a standard OAuth access token from your app ID and app secret, much like you would do with Twitter.
+

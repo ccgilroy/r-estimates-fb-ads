@@ -6,7 +6,6 @@
 #'   beamer_presentation: 
 #'     theme: "metropolis"
 #'     latex_engine: xelatex
-#'     # fig_caption: false
 #'     highlight: pygments
 #'     df_print: kable
 #' ---
@@ -116,9 +115,12 @@ bind_rows(
 #' ## Exercises
 
 #' **Exercise 1:**
-#' Pick 3 other countries and report the number of Facebook users in each
-#' (Compare to world bank populations?)
-#' Use two-digit country codes: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+#' Pick 3 other countries and report the number of Facebook users in each. 
+#' Compare these numbers to the actual populations from the World Bank or 
+#' some other source.
+#' 
+#' Use two-digit country codes for countries: 
+#' https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #' 
 
 #' **Exercise 2:**
