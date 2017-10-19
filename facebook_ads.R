@@ -113,7 +113,7 @@ bind_rows(
 )
 
 #' ## Exercises
-
+#' 
 #' **Exercise 1:**
 #' Pick 3 other countries and report the number of Facebook users in each. 
 #' Compare these numbers to the actual populations from the World Bank or 
@@ -123,13 +123,27 @@ bind_rows(
 #' https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #' 
 
+
+
 #' **Exercise 2:**
 #' Pick another US state and age range, and compare the numbers of men and women.
-#' You can look up the key that Facebook uses for each state in the file provided.
+#' You can look up the key that Facebook uses for each state in the file provided, 
+#' targeting_spec_us_states.json. 
+#' 
+#' You will need to create your own json targeting spec, using the examples 
+#' provided as a template. It is recommended that you edit json files in 
+#' RStudio, unless you are using a text editor designed for writing code. 
 #'
 
+
+
+#' ## Exercises
+#' 
 #' **Challenge exercise:**
 #' Get the Facebook user population for each US state. 
 #' Compare these estimates to population estimates from the Census ACS.
 #' Note that you'll need to make a separate call to the API for each state, 
 #' which will take several minutes.
+#' 
+
+
