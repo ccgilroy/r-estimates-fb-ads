@@ -44,6 +44,10 @@ fb_query <- list(
 
 r <- GET(fb_ads_url, query = fb_query)
 
+#' ## Look at response
+
+prettify(content(r, as = "text"))
+
 #' ## Example 2: Young men and women in Washington State
 #' 
 #' In the state of Washington, how many men and women 
@@ -111,6 +115,27 @@ bind_rows(
   process_fb_response(ts1, r1),
   process_fb_response(ts2, r2)
 )
+
+#' ## Example 3: A more complex query
+ts3 <- read_file("targeting_specs/targeting_spec_03.json")
+cat(ts3)
+
+#' ## Understanding the targeting spec
+#' 
+#' How many women in the US *or* Great Britain, between ages 25-55, are
+#' 
+#' - either in a relationship *or* married
+#' 
+#' **AND**
+#' 
+#' - either an undergrad *or* an alum
+#' 
+#' https://developers.facebook.com/docs/marketing-api/targeting-specs
+#' 
+
+#' ##
+r3 <- make_fb_ads_request(ts3)
+prettify(content(r3, as = "text"))
 
 #' ## Exercises
 #' 

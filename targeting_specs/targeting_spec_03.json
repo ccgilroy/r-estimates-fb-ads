@@ -1,0 +1,10 @@
+{
+    "geo_locations": {
+        "countries": ["US", "GB"]
+    },
+    "genders": [2],
+    "age_min": 25,
+    "age_max": 55,
+    "relationship_statuses": [2, 3],
+    "education_statuses": [2, 3]
+}
