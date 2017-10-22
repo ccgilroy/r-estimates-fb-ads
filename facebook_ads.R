@@ -35,6 +35,21 @@ fb_ads_url <- str_c(fb_url, fb_cfg$ad_account_id,
 #' ## Example 1: US population on Facebook
 targeting_spec <- '{"geo_locations": {"countries": ["US"]}}'
 
+#' This is as simple as a targeting spec can be.
+#' We're specifying just a geographic location:
+#' one country, the United States.
+#' 
+#' The braces (`{ }`) and brackets (`[ ]`) define a hierarchy. 
+#' As requests get more complex, it will become clear why we need them.
+#' 
+
+#' ## Make request
+#' 
+#' In addition to the access token and targeting spec, 
+#' there are two required parameters we need to include. 
+#' Their values aren't important.
+#' 
+
 fb_query <- list(
   access_token = fb_cfg$access_token, 
   currency = "USD", 
@@ -62,8 +77,21 @@ ts2 <- read_file("targeting_specs/targeting_spec_02.json")
 #' ##
 cat(ts1)
 
-#' ## 
+#' ## Helper function
+#' 
+#' Each request returns a single number. To build an interesting 
+#' data set, we need to make many requests.
+#' 
+#' To do this, we'll wrap our request code in a *helper function*. 
+#' The function will take a targeting spec and return a response. 
+#' The other query parameters that don't change will be hard-coded. 
+#' 
+#' Finally, we need to know about the concept of **rate limiting**. 
+#' If we make too many requests too quickly, we'll be *rate limited*, 
+#' and we won't be able to make any more requests for a while.
+#' 
 
+#' ##
 make_fb_ads_request <- function(ts) {
   # Avoid rate limiting! 
   # Don't make too many requests in a short period of time.
@@ -91,19 +119,20 @@ r2 <- make_fb_ads_request(ts2)
 #' 
 #' As with the requests, we'll do this using a function.
 #' 
+#' This function will return a data frame with a single row.
+#' 
 #' ##
-
 process_fb_response <- function(ts, r) {
-  # targeting spec
   ts_df <- 
-    fromJSON(ts) %>%
-    as_data_frame() %>%
-    unnest(geo_locations)
-  
-  # response
+    as_data_frame(fromJSON(ts)) %>%
+    unnest(geo_locations) %>%
+    summarise_all(function(x) {
+      ifelse(length(unique(x)) > 1, 
+             list(unique(x)), unique(x))
+    })
+
   r_df <- 
-    content(r, as = "parsed")$data %>%
-    as_data_frame() %>%
+    as_data_frame(content(r, as = "parsed")$data) %>%
     select(users)
   
   bind_cols(ts_df, r_df)
@@ -136,6 +165,9 @@ cat(ts3)
 #' ##
 r3 <- make_fb_ads_request(ts3)
 prettify(content(r3, as = "text"))
+
+#' Try out `process_fb_response(ts3, r3)` too!
+#' 
 
 #' ## Exercises
 #' 
