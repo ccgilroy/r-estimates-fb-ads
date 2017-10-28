@@ -8,6 +8,8 @@
 #'     latex_engine: xelatex
 #'     highlight: pygments
 #'     df_print: kable
+#' header-includes: 
+#'   - \setmonofont[Mapping=]{Fira Mono}
 #' ---
 #' 
 
