@@ -63,6 +63,8 @@ r <- GET(fb_ads_url, query = fb_query)
 
 prettify(content(r, as = "text"))
 
+content(r, as = "parsed")$data$users
+
 #' ## Example 2: Young men and women in Washington State
 #' 
 #' In the state of Washington, how many men and women 

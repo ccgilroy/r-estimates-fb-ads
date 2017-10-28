@@ -45,7 +45,7 @@ The authentication process is similar to that for the Twitter API, in that you
 create an application and use it to generate an OAuth access token. It is
 moderately complex, so follow the instructions carefully.
 
-The overarching steps to accomplish are the following: 
+The overarching steps to accomplish are the following:
 
 - Create a verified Facebook account
 - Create a developer app
