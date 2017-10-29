@@ -16,6 +16,12 @@ media data that has previously only been accessed using other tools and
 languages, such as Python. The module thus illustrates the versatility and
 utility of R and `httr` for digital demography.
 
+Additionally, we present examples of contemporary demographic research using the
+Facebook Marketing API in slides found
+[here](https://github.com/ccgilroy/r-estimates-fb-ads/blob/master/Zagheni_et_al_IUSSP_2017_FB_ads.pdf)
+and
+[here](https://github.com/ccgilroy/r-estimates-fb-ads/blob/master/facebook_ads_intro.pdf).
+
 ## Using this module
 
 The easiest way to work with this module is as an "R Project." To do this,
